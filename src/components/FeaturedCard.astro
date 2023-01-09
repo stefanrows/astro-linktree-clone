@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon"
+const { featuredCardIcon, featuredCardTitle, featuredCardLink } = Astro.props
+---
+
+<div
+  class='flex flex-col p-1 text-center transition-all duration-500 bg-white rounded lg:w-32 w-28 bg-opacity-20 backdrop-filter backdrop-blur-lg hover:bg-opacity-40 hover:scale-110'
+>
+  <a class='text-xs text-white sm:text-base' href={featuredCardLink}>
+    <div class='flex justify-center'>
+      <Icon class='h-24 p-2' name={featuredCardIcon} />
+    </div>
+    <div class='flex flex-col break-words'>
+      <hr class='h-px mx-6 my-4 bg-white border-0 opacity-50' />
+
+      <p class='text-sm text-white sm:text-lg'>{featuredCardTitle}</p>
+    </div>
+  </a>
+</div>
