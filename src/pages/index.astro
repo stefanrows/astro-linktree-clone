@@ -6,6 +6,7 @@ import FeaturedCard from "@components/FeaturedCard.astro"
 import LinksLayout from "@layouts/LinksLayout.astro"
 import Link from "@components/Link.astro"
 import Social from "@components/Social.astro"
+const links = await Astro.glob("./links/*.md")
 ---
 
 <MainLayout title='Astro LinkTree Clone'>
@@ -23,21 +24,17 @@ import Social from "@components/Social.astro"
     />
   </FeaturedCardsLayout>
   <LinksLayout>
-    <Link
-      linkTitle='🧑‍🚀 Astro'
-      linkDescription='Astro Homepage'
-      linkUrl='https://www.astro.build'
-    />
-    <Link
-      linkTitle='🌍 My Portfolio'
-      linkDescription='Look at my portfolio!'
-      linkUrl='https://www.stefanrows.com'
-    />
-    <Link
-      linkTitle='🎥 YouTube'
-      linkDescription='Visit my YouTube channel!'
-      linkUrl='https://www.youtube.com/c/stefanrows'
-    />
+    {
+      links.map((link) => {
+        return (
+          <Link
+            linkTitle={link.frontmatter.linkTitle}
+            linkDescription={link.frontmatter.linkDescription}
+            linkUrl={link.frontmatter.linkURL}
+          />
+        )
+      })
+    }
   </LinksLayout>
   <Social />
 </MainLayout>
